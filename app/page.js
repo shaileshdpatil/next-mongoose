@@ -1,95 +1,50 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+import "./globals.css";
 
 export default function Home() {
+    const onFormSubmit = (event) => {
+        event.preventDefault()
+        const formData = new FormData(event.target);
+        console.log(formData.get('fullName'))
+    }
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+      <>
+          <form autoComplete="off" onSubmit={onFormSubmit}>
+              <div>
+                  <label htmlFor="fullName">Full Name</label>
+                  <input type="text" name="fullName" id="fullName"/>
+              </div>
+              <div>
+                  <label htmlFor="empCode">Description</label>
+                  <input type="text" name="empCode" id="empCode"/>
+              </div>
+              <div>
+                  <label htmlFor="salary">Salary</label>
+                  <input type="text" name="salary" id="salary"/>
+              </div>
+              <div>
+                  <label htmlFor="city">City</label>
+                  <input type="text" name="city" id="city"/>
+              </div>
+              <div className="form_action--button">
+                  <input type="submit" value="Submit"/>
+                  <input type="reset" value="Reset"/>
+              </div>
+          </form>
+          <table className="list" id="employeeList">
+              <thead>
+              <tr>
+                  <th>Full Name</th>
+                  <th>EMP Code</th>
+                  <th>Salary</th>
+                  <th>City</th>
+                  <th></th>
+              </tr>
+              </thead>
+              <tbody>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+              </tbody>
+          </table>
+      </>
   );
 }
